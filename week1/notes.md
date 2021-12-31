@@ -109,3 +109,75 @@
         - A span can have content before and after its appearance
 
 + Inline and Block Elements are not used in HTML5 but you CAN use them with current CSS implementations
+
+## Semantic Elements
++ Semantic = Names of tags have defined meaning to the content
+    - semantic elements tells the programmer/computer what the meaning of some content is
+    - Semantic tags makes more clear what content relates to what meaning  
++ Search Engines may relie on semantic HTML tags
++ <h1> element is the most important heading within the content. 
+    - This might affect the search engine to find your page --> You should always have an h1 heading
+    - This should be the most expressive summary of the Page
+    - Every div tag could look like an h1 heading with CSS, but then it has no semantic meaning to the page and therefore for the search engine
+### HTML5 semantic elements
+All of the upcoming tags are block-level elements --> They all start a new line when they occure
+
+With the tags, your HTML document has inheritly some structural meaning. Therefore you should use them, even if you can make your page look cool without semantic elements. 
++ header: 
+    - Defines some header information
++ section: 
+    - could contain aricles 
++ article 
+    - could contain sections
++ aside: 
+    - Here you can place something that is related to the page but NOT the main content
++ footer: 
+    - foot notes
+
+## HTML Lists
++ <ul> = unordered list
+    - Every part of a unordered list needs to be a list element <li>
+    - If you nest two unordered lists inside each other, it will be shown as a tabed sub-list
+    - Only list elements can be within a unordered list. Free text is not valid in HTML
++ <ol> = ordered list 
+    - Gets shown as a enumerated list
+
+## Entity References
+Commonly used in order to avoid rendering issues 
++ Special characters that are keywords or parts of keywords (like < > for tags) have their own calling procedure within HTML
+    - e.g. & == &amp; or < == &lt; and > == &gt;
++ Copyright: &copy 
++ Do not line break between words: Instead of the space, you can use &nbsp
++ &quot; --> " (not necessary in utf8 but in more restricted character systems)
+
+## Links
+### Internal Links
++ <a href="relative_or_absolute_url" title="title link the is shown if you go over the link">Content to click</a>
+    - If you use relative URLs, your linked file needs to be in the same folder as the top level doctype html
+    - A hyper reference is an inline element in HTML
++ In HTML5 you can use a div tag inside an a tag
+    - This is mainly used if you want to click on a company logo or something like this that should bring you to the landing page of the website
++ href = Hypertext Reference
+    - Could be an absolute or relative URL
+    - On a webserver, you need to specify absolute links
++ title attribute: If you go over the link with your mouse, it will show that text
++ An a tag (link) can be an inline or a block level element. You can place a block level element within the area between the opening a tag and the closing a tag in order to achive clickable regions, like logos or something to click on 
++ target attribute: 
+    - target="_blank" --> Open the hyper reference in another tab within the browser
+        - This is usually a good idea, because people have a short attention span, so if you redirecting them to another web page which is not yours, chances are high that they never come back to your webpage!
++ You can also reference a part of your web page by using the id tag and creating a href to the id of your element
+    - Syntax example: ```<a href="#id_name" title="Go to the named ID">Go to the referenced part of my web page</a>```
+        - We have a section within our html document that has an attibute ```id="id_name"```
+    - This ```#<id_name>``` is called a "fragment identifyer link". You can get the corresponding URL from your web browser (usually this is the link to your webpage with a postfix of `#<id_name>`)
+    - This is important for "single page applications" 
+
+## Comments in HTML
++ Syntax: ```<!-- This is a Comment -->```
+
+## Images within HTML pages
++ Images are inline level elements in HTML
++ Use the img tag for inserting images
+    - You should always specify the width and high attributes in the opening tag! If you do not do this, the browser will *not* reserve the specifyed space for your image and therefore, if the image has a bigger latency for transfering it to your client (i.e. browser), the page will be reorganized if the image was completly transferred. ==> ***Best Practice: Always specify width and hight!*** To reserve the space even if the image is not there from the beginning
+    - As long as the URL to your image is valid, the space will be reserved. If the URL is broken or your internet connection does not allow to download the image, the web page layout will be correct. 
++ Syntax example: 
+    - ```<img src="/path/to/image.jpeg" heigh="300" width="400" alt="">```
