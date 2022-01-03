@@ -95,3 +95,39 @@ We can use combinations of selectors to define generally applicable CSS rules in
             - Needs to be within the head tag of your HTML document
     - This is the common way to define your style
     - Explicit style tags within the head tag of a HTML page will override the global styling that is delivered by the external style sheet (if the external style sheet is linked within a line that comes before the style tag)
+
+## Conflict resolution and cascading in CSS
++ There are three basic rules that are define the cascading algotrithm in CSS, which determines which rule will be applied to which HTML tag
+    - Origin-Precedence: If we have conflicting CSS rules for a HTML object, ***the last declaration of the styling rule wins!*** Thereby, the browser reads the HTML page from top to bottom, so if you specify a rule within the style.css file and link it within the head tag of the html document BUT after the link to the style.css there is a style-HTML tag which defines some styling that is already defined within the style.css, the declation of the HTML-style tag is used. Also, if you define a HTML tag with a styling attribute, the styling attribute will be choosen, since it is in every case written after the head tag and therefore it comes last to the HTML parser of the browser ==> The lower a style rule is within the HTML document, the higher is its precedence
+    - Merge: If you have two sources for the styling of a HTML tag (e.g. within a style.css file and the second is defined as an attribute to the HTML tag itselfe), the styling will merge (the tag will have both attributes), even if there are two sources of the styling configuration. (As long as it is not the same attribute that was defined before. If that would be the case, the Origin-Precedence rule will be applied.)
+    - Inheritance: If we define an attribute (does not matter where) for an element in the DOM (Data Object Model - https://de.wikipedia.org/wiki/Document_Object_Model), every child (and grandchild, etc.) HTML-tag will inherit that attibute, as long as it is applicable to it and as long as it does not get overwritten. 
+        - Common/Best practice: Define a styling rule for the body HTML tag and then override it occationally if you need another style with an attribute of the HTML tag (e.g. text-align, font-family and color)
+    - Specifity: "Most specific selector combination wins" (This confuses the most developers, if you do not work with this every day) ==> In the background, the CSS cascading algorithm calculates a score for a style that should be applied to a HTML tag. There are four parts that define the score: 
+        - style-attribute of a HTML tag: If you define a style as an attribute of a HTML tag, this is the most specific style rule you can define. Therefore it is the "most segificant part" of the score which will override all other parts if it is 1 (==true) ~ 1000 is the highest score that we can have for a style attribute 
+        - ID: Binary value --> If your CSS rule defines an ID-Attribute, it will be 1 (e.g.: `div #myPrag { color: green; }`)
+        - Class or Pseudo-Class: Binary value --> If your CSS rule defines a class attribute, it will be one (e.g. `div.big { color: green; }`)
+        - Number of Elements (HTML Tags) that should take this styling rule: `div p { color: green; }` --> Would be a 2 for the "Number of Elements"-Score.  
+        ==> We define the value of the score from left to right (i.e. from top to bottom in the upon listing of the score components)
+        - You can override the specificity rule with a `!important` after the individual defined attribute within a CSS rule. CAUTION: This is an ANTIPATTERN, since your code will be very bad maintainable 
++ The Cascading Style Algorithm is what makes CSS so powerfull, since it make style definitions reusable over a web page project/a HTML-document.  
++ You can look up from which definition a style of an HTML element on a webpage comes by looking at the browser developer tools and inspect the element
+    - "user agent stylesheet" means "browser default" in google chrome
+    - You can also see in chrom overwritten styles by the crossed out stylings 
+
+## Styling Text 
++ Common styling attributes for text tags within HTML: 
+    - font-family: It is good practice to define more then one font in the font family, since we rely on the installed fonts on the computer where the website is called. 
+    - color: Commonly in hexadecimal numbers (RRGGBB) --> Every letter is a hexadecimal and defines the RGB color space with values from 0 to 255 in HEX
+    - font-style: Make it italic 
+    - font-weight: Make the text bold
+    - font-size: How big should be the text view in px
+    - text-transform: lowercase, uppercase, capitalize
+    - text-align: Where should be the text placed on the available scree width (left, right, center)
++ Relative font sizing: 
+    - We can define relative font sizes by percent and by setting a relative size to the letter m 
+    - If you choose percent, most browsers resolve the font size by 16 px
+        - example: `body { font-size: 120%; }`
+    - If you choose the relative to a the letter m definition, the text will be N* the size of the letter m in the current font-style. 
+        - You can do this by `div { font-size: 2em}` for making the font size twice as big as the m in the current font style. 
+        - You can also shrink the font size by doing `span { font-size: 0.5em }`
+
