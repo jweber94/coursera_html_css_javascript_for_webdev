@@ -131,3 +131,74 @@ We can use combinations of selectors to define generally applicable CSS rules in
         - You can do this by `div { font-size: 2em}` for making the font size twice as big as the m in the current font style. 
         - You can also shrink the font size by doing `span { font-size: 0.5em }`
 
+# The Box Model
++ In HTML, everything is interpreted as a box. You can set up padding, high, width and color as well as a whole lot of other properties with CSS or HTML-Tag Attributes.
+    - You can look at all HTML Box-Elements within the developer tools and where the set up properties come from in the "Elements" section, where you can select an Element within the browser screen and show its properties and where they come from. 
++ The basic attributes for the HTML Boxes for the HTML tags can be set by 
+    - `background-color: blue`
+    - `padding: 10px, 10px, 10px, 10px;` (left, right, top, bottom)
+    - `border: 5px solid black;`
+    - `margin: 40 px` 
+    - `width: 300px` --> CAUTION: We define the Box of the Content, NOT the width of the complete box. If you want to change it, you use the attribute _box-sizing_, where you can choose between content-box (which is the described logic before) or content-box (which is the default for many HTML frameworks like bootstrap)
++ Commonly you setup some box ID-Selectors or Classes and then hand over the ID-Selectors / Classes to the ID-Tags / Class attributes of the HTML tags that are used within the HTML document. 
+    - CAUTION: Box sizing with the box-sizing attribute is one of the few CSS attributes that can NOT be inherited. 
+    - You can do this even through, if you define a CSS rule with `* { box-sizing: border-box; }`, which means, that every HTML Tag should be set up to the defined parameters (as long as they did not get overwritten further down the line.)
+        - This is called the "Start Selector"
+    - `border-box` setting for the `box-sizing` attribute/CSS rule: 
+        - Means, that the defined width is equivalent to the combination of margin, padding and border
+    - `content-box` setting for `box-sizing` attrubute/CSS rule: 
+        - Means, that you define the width of the complete HTML-Tag-Box by the width + padding + 2 * border (left and right border) + margin 
++ If you have multiple HTML Tags with overlapping margins, the margins are collapsing. That means, that the bigger margin wins. 
++ CAUTION with margins or other Tag Box settings:
+    - Most browsers has default-values for the most common HTML tags and therefore they get overwritten if you define a margin for the body tag in the head of your HTML document and use a browser predefined tag within the body. Even if the (for example h1) tag inherits the margin, it will be overwritten by the browser settings! You can inspect or ensure that by looking at the developer tools and check if a margin comes from the head of the HTML document or from user agent settings (which is the browser default)
++ If your content is longer then your available space (width and high of the content box is constrained), the content box will be expaned but not envolved with the margin, padding and border in the vertical space. If you place another content HTML tag (and therefore another box) right under the overflowed box, the content will overlapp and therefore unreadable.
+    - To avoid this, you can use the overflow-property/attribute. 
+        - `overflow: visable` --> like described above 
+        - `overflow: auto` --> Put scroll bars where ever their needed
+        - `overflow: hidden` --> The content will be cut at the end of the defined content box (CAUTION: Users hate two scroll bars)
+
+## Background Property
++ We can define backgroud properties of CSS rules for HTML tags in two ways: 
+    - Dashed version:
+        - `background-color: blue;`
+        - `background-image: url("/path/to/file.png");` --> The path has to be relativ to the CSS file (e.g. styles.css);` By default, the Image gets repeaded horizontally and vertically 
+        - `backgroup-repead: no-repead;` --> No repition of a defined image
+        - `background-position: center right` --> Place the image on the right in the vertical center of the box for the HTML tag, If you just define one placement, the other position definition gets defaulted to center
+    - List version: 
+        - `background: url(/path/to/img.png) no-repead right center blue`
++ Caution: If you overwrite a dashed version by setting the list version further down the line, the dashed version will be overwritten and therefore it will have no affect to the styling
+
+## Positioning Schemes - Floating
++ Floating positioning of elements is an alternativ to the normal HTML document flow
++ Most of the frontend frameworks work by placeing tags as floating positioning
++ Floating means that we can position HTML tags with their boxes next to each other in the same line without overlapping them. Therefore we define the attribute/CSS rule `float: right;` or `float: left;` to elements in the same line
+    - If the elements are within another HTML tag box, they are placed within the boundarys of the content of the parent box. 
++ If you want your box in a dedicated line, you need to clear the floating arrangement
+    - Therefore you do `clear: left;` or `clear: right;` --> Nothing is allowed to be floaded left or right from the defined element that has this CSS rule aplied
+    - Alternativly you can say `clear: both;`
++ Floating elements can be arranged vertically next to each other. Their margins, padding and border will be respected. If there is not enough space vertically, the floating element will went to the next line (e.g. if you squeeze your browser horizontally)
++ Two colomn Layout: 
+    - Specify the width of a child-element to a percentage of the available space (e.g. `p { width: 50% }`, whereas p is a child of the body tag of the HTML document.)
++ If a floating element is bigger in the horizontal axis that it can not fit in the same line  with another floating element, it will be moved to the next line (without overlapping or collapsing with the second floating element in that line)
++ If an element is floating, the complete document flow is floating
+
+## Static Positioning
++ Is the default for all HTML tags in the normal HTML document flow except `html`. `html` is a relativ positioned element. 
++ Position offsets of static positioned elements are just ignored.
+
+## Positioning Schemes - Relativ Position
++ Elements that are relativ positioned are placed relativ to their normal position (in case of the normal html document flow)
+    - You can say "Please position the div-box element 20 px from top and 10 px from left to the normal position"
+    - All other elements behave like they normally would. It is just the appearence, where the relativ positioned element is rendered, not where the backend thinks it is places. 
++ If you set the positioning CSS rule for a HTML tag to relativ, you basically set the anchor to the point where the element would be in the normal html document flow and make the possability available to move it relativ to the anchor during rendering
++ CAUTION: The relativ positoned element is NOT taken out of the normal document flow. All other HTML tag-boxes are placed also relativ to the anchor.  
++ Example: 
+    - ```p {position: relativ; 
+            top: 50px; 
+            left: 50px;
+        }```
+    - This is a box that is rendered 50 pixels FROM left and 50 pixels FROM the top (you can say "It moved more to the middle of the page.")
+
+## Positioning Schemes - Absolute Position
++ If you do not define a `position: relativ` for a tag and still give relativ positioning for a CSS rule with an positioning rule `position: absolute`, the html tag box will be interpreted as absolut and  placed relativ to the next anchestor tag that is defined as relativ. (If no other elements defined as relativ, the html tag is a relativ tag by default.)
+    - CAUTION: An absolut positioned box will ignore all other html tag boxes and will overlay them
