@@ -202,3 +202,51 @@ We can use combinations of selectors to define generally applicable CSS rules in
 ## Positioning Schemes - Absolute Position
 + If you do not define a `position: relativ` for a tag and still give relativ positioning for a CSS rule with an positioning rule `position: absolute`, the html tag box will be interpreted as absolut and  placed relativ to the next anchestor tag that is defined as relativ. (If no other elements defined as relativ, the html tag is a relativ tag by default.)
     - CAUTION: An absolut positioned box will ignore all other html tag boxes and will overlay them
+
+# Responsive Design
++ Responsive design is the possability to make your CSS rules dependend on the size of the screen (which might be an indicator of the viewing device)
+    - Remember: CSS makes it possable to let your HTML page (= structure + content) look different, depending on your CSS styles.
+    - If your CSS styles are dependend on viewing settings (e.g. the number of pixels in the width of the viewing device), you can respond to diffent viewing settings with different styles, which is the basic principle of responsive design
+
++ Basic syntax: 
+    - ```@media (max-width: 767px) { p { color: blue; } }```
+        - @media keyword with its features and their settings
+            * You can define more then one media feature
+            * If all of them resolves to true, the media-query will be applied
+        - In the curly brackets you can define the normal CSS rules that should apply for the media query setting 
+    - Besides from max or min width of the media query feature, you can define settings for screens or for prints of your HTML page
+        - `@media screen {<CSS Rules>}`
+        - `@media print {<CSS Rules>}`
+    - Combination of media-querys can be done with logical operators   
+        - And: `@media (min-width: 768px) and (max-width: 992px) {...}` 
+        - Or: `@media (max-width: 768px), (min-width: 992px)`
+
++ Best practice by working with media querys: 
+    - Define a base styling that will be applied if no media query evaluates to true
+    - Then define some media querys to adjust the wanted styling on the intented devices
+    - By doing this, you will ensure you have a valid design, even if no media query resolves to true
+
++ CAUTION: If you define more then one media query, ***make sure no media query feature attributes overlapp in their completness so that there is no possability that more then one styling trys to be applied!***
+
+## Definition of responsive web design
+"Site designed to adapt its layout to the viewing environment by using fluid proportion-based grids (aka floating elements), flexible images and CSS3 media querys"
++ That means, the layout and rendering website adapts to the size of the device while the content and underlying structure remains the same
+    - The content verbosity may change based on the layout. (e.g. phone numbers at desktop versions may appear small while on a mobile device (and therefore with a small width) it is one of the most prominent HTML-tag-boxes on the page to make it directly usable by a mobile device user)
+
++ Fundamental thinking princable of responsive design: 
+    - Start by designing the page for the mobile version, so you define which content is the most relevant for the user and then design it for the desktop version
+
++ By using media querys, you can deliver just one website with two stylings whereas old implementations principals let the server check if it is a mobile or a desktop device and then deliver a completly separat developed website. This is considered bad practice and has an inherent need for developing two individual web pages (which is unnecessary expensive)
+
+## 12-Column Grid Responsive Layout
++ Default for the most responsive web development frameworks
++ Work with block-level elements (e.g. div) and you can place up to 12 (or 5, 4, 2, 1) boxes in one line. 
+    - By using floating div elements!
+    - One column is 100%/12 = 8.33% for the width of one grid element
+    - Visualization (Ressource: https://www.coursera.org/learn/html-css-javascript-for-web-developers/lecture/Pfa75/lecture-24-part-1-responsive-design): ![](220108_12_grid_layout.png)
+
+## CAUTION: Mobile devices
++ Mobile devices commonly zoom out a website by 0.x (e.g. IPhone 6 make x0.4 of the used pixels) to fit more content on the mobile device screen
++ You can avoid this by setting the CSS rule
+    - `<meta name="viewport" content="width=device-width, initial-scale=1">`
+ 

@@ -1,0 +1,56 @@
+/** Basic styling **/
+
+h1 {
+    margin-bottom: "15px"
+}
+
+p {
+    border: 1px solid black;
+    margin-bottom: 15px;
+}
+/*ID selectors*/
+#p1 {
+    background-color:aqua;
+    width: 300px;
+    height: 300px;
+    overflow: auto;
+}
+
+#p2 {
+    background-color: blueviolet;
+    width: 100px;
+    height: 100px;
+    overflow: auto;
+}
+
+.myH2 {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: x-large;
+    color: deeppink;
+}
+
+/** Media Query 1 **/
+@media (min-width: 1200px) {
+    #p1 {
+        background-color: chartreuse;
+        width: 80%;
+    }
+
+    #p2 {
+        background-color: darkslateblue;
+        width: 150px
+    }
+}
+
+/** Media Query 2 **/
+@media (min-width: 992) and (max-width: 1999) {
+    #p1 {
+        width: 50%;
+        background-color: floralwhite;
+    }
+    #p2 {
+        width:120px;
+        height: 125px;
+        background-color: seagreen;
+    }
+}
