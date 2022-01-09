@@ -249,4 +249,19 @@ We can use combinations of selectors to define generally applicable CSS rules in
 + Mobile devices commonly zoom out a website by 0.x (e.g. IPhone 6 make x0.4 of the used pixels) to fit more content on the mobile device screen
 + You can avoid this by setting the CSS rule
     - `<meta name="viewport" content="width=device-width, initial-scale=1">`
- 
++ This is called "Mobile First" strategy 
+
+# Twitter Bootstrap
++ Bootstrap is the most popular HTML, CSS and JavaScript framework for developing responsive, mobile first project on the web.
++ Boostrap defines a lot of CSS classes
++ In order to use bootstrap, you need to have a certain HTML document structure (mostly some additional div elements) and apply the bootstrap classes to them. 
++ Javascript is based on jQuery
++ Disadvantages: 
+    - Too bloated --> But you can use selective download
+## Use Bootstrap
++ Download the precompiled version from here: 
+    - https://getbootstrap.com/docs/5.1/getting-started/download/
++ Unzip the files and put them into you project folder that you want to serve on your web server
++ Include the `css/bootstrap.min.css` file to your HTML document with
+    - `<link rel="stylesheet" href="css/bootstrap.min.css>"` into the head section of your HTML document
++ Since bootstrap depends on jquery, we need to download jquery from here (https://jquery.com/download/ - `jquery-3.6.0.min.js`) and put it into the bootstrap `js` folder in your project 
