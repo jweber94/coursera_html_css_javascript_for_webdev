@@ -265,3 +265,37 @@ We can use combinations of selectors to define generally applicable CSS rules in
 + Include the `css/bootstrap.min.css` file to your HTML document with
     - `<link rel="stylesheet" href="css/bootstrap.min.css>"` into the head section of your HTML document
 + Since bootstrap depends on jquery, we need to download jquery from here (https://jquery.com/download/ - `jquery-3.6.0.min.js`) and put it into the bootstrap `js` folder in your project 
++ If you missed something out on your bootstrap project, you will get prompted some errors on the dev tools in chrome if you inspect the elements that you have created in your HTML document. 
+
+### Basic bootstrap structure
+```
+<div class="container">
+    <div class="row">
+        <div class="col-md-4"> 
+            Here comes your acutal content!
+        <div>
+    </div>
+</div>
+```
+
++ container class div element:  
+    - container or container-fluid
+    - container-fluid = stratches layout to the full width of the browser and provides consistend padding around the grid
+    - container = predetermined, fixed width but still responsiv in the arangement of the grid layout 
+    - Every bootstrap div needs a container wrapper in order to have a reference frame to show up in
++ row class div element: 
+    - Creates horizontal groups of elements
+    - applies negativ left and right margins in order to place the content of the underlying column div elements in arrangement to the outside-container HTML elements. 
+        - Example: (Reference: https://www.coursera.org/learn/html-css-javascript-for-web-developers/lecture/e2lrH/lecture-26-part-1-the-bootstrap-grid-system)
+            ![](bootstrap_negativ_row_margin_explained.png)
+        - The negativ margin pulls the content columns out of the rows such that their content start where the container also starts. So if you add another row class div element, or add other HTML elements within the container element, your content always starts in the same column
++ column class div element: 
+    - As in the responsive design framework example - We have 12 columns to fill which are defined by the 100% of the visable space in your browser. 
+    - Nameing explained by the example: ```col-md-4```
+        - `col`: column element to float from left to right
+        - `md`: size for the visability of the div element - md defines a range of pixel widths of your browser to which they are applied 
+        - `4`: 4/12 columns used
+    - Basic Pattern: `col-SIZE-SPAN` 
+    - Remark: You can give a HTML element more then one class that might be applied to it. Therefore it is possable to have different column numbered grid cells applied to the div element, depending on which width the browser shows your web page!
+        - Example: `<div class="col-md-4 col-sm-2">My Content</div>` 
+    
