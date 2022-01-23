@@ -1,0 +1,183 @@
+
+/*** Common Settings ***/
+* {
+    box-sizing: border-box;
+}
+
+h1 {
+    width:500px;
+    margin: 0 auto;
+    text-align: center;
+}
+.row {
+    width: 100%;
+}
+
+/************************/
+/**** Content Boxes *****/
+/************************/
+
+/*** Desktop Setup ***/
+@media (min-width: 992px) {
+    /* Common settings for all desktop grid elements */
+    .col-dt-1, .col-dt-2, .col-dt-3, .col-dt-4,
+    .col-dt-5, .col-dt-6, .col-dt-7, .col-dt-8,
+    .col-dt-9, .col-dt-10, .col-dt-11, .col-dt-12 {
+        float: left;
+        border: 1px solid black;
+        background-color: grey;
+    }
+    /* twelvefold column class definition */
+    .col-dt-1 {
+        width:8.33%;
+    }
+    .col-dt-2 {
+        width:16.66%;
+    }
+    .col-dt-3 {
+        width:25%;
+    }
+    .col-dt-4 {
+        width:33.32%;
+    }
+    .col-dt-5 {
+        width:41.65%;
+    }
+    .col-dt-6 {
+        width:50%;
+    }
+    .col-dt-7 {
+        width:58.31%;
+    }
+    .col-dt-8 {
+        width:66.64%;
+    }
+    .col-dt-9 {
+        width:74.97%;
+    }
+    .col-dt-10 {
+        width:83.3%;
+    }
+    .col-dt-11 {
+        width:91.63%;
+    }
+    .col-dt-12 {
+        width:100%;
+    }
+}
+
+/*** Tablet Setup ***/
+@media (min-width: 768px) and (max-width: 991px) {
+    /* Common settings for all desktop grid elements */
+    .col-tab-1, .col-tab-2, .col-tab-3, .col-tab-4,
+    .col-tab-5, .col-tab-6, .col-tab-7, .col-tab-8,
+    .col-tab-9, .col-tab-10, .col-tab-11, .col-tab-12 {
+        float: left;
+        border: 1px solid black;
+        background-color: grey;
+    }
+    /* twelvefold column class definition */
+    .col-tab-1 {
+        width: 8.33%;
+    }
+    .col-tab-2 {
+        width: 16.66%;
+    }
+    .col-tab-3 {
+        width: 25%;
+    }
+    .col-tab-4 {
+        width: 33.32%;
+    }
+    .col-tab-5 {
+        width: 41.65%;
+    }
+    .col-tab-6 {
+        width: 50%;
+    }
+    .col-tab-7 {
+        width: 58.31%;
+    }
+    .col-tab-8 {
+        width: 66.64%;
+    }
+    .col-tab-9 {
+        width: 74.97%;
+    }
+    .col-tab-10 {
+        width: 83.3%;
+    }
+    .col-tab-11 {
+        width: 91.63%;
+    }
+    .col-tab-12 {
+        width: 100%;
+    }
+}
+
+
+/*** Mobile Setup ***/
+@media (max-width: 767px) {
+    /* Common settings for all desktop grid elements */
+    .col-mob-1, .col-mob-2, .col-mob-3, .col-mob-4,
+    .col-mob-5, .col-mob-6, .col-mob-7, .col-mob-8,
+    .col-mob-9, .col-mob-10, .col-mob-11, .col-mob-12 {
+        float: left;
+        border: 1px solid black;
+        background-color: grey;
+    }
+    /* twelvefold column class definition */
+    .col-mob-1 {
+        width: 8.33%;
+    }
+    .col-mob-2 {
+        width: 16.66%;
+    }
+    .col-mob-3 {
+        width: 25%;
+    }
+    .col-mob-4 {
+        width: 33.32%;
+    }
+    .col-mob-5 {
+        width: 41.65%;
+    }
+    .col-mob-6 {
+        width: 50%;
+    }
+    .col-mob-7 {
+        width: 58.31%;
+    }
+    .col-mob-8 {
+        width: 66.64%;
+    }
+    .col-mob-9 {
+        width: 74.97%;
+    }
+    .col-mob-10 {
+        width: 83.3%;
+    }
+    .col-mob-11 {
+        width: 91.63%;
+    }
+    .col-mob-12 {
+        width: 100%;
+    }
+}
+
+/************************/
+/**** Section Title *****/
+/************************/
+.col-mob-1, .col-mob-2, .col-mob-3, .col-mob-4,
+.col-mob-5, .col-mob-6, .col-mob-7, .col-mob-8,
+.col-mob-9, .col-mob-10, .col-mob-11, .col-mob-12, 
+.col-tab-1, .col-tab-2, .col-tab-3, .col-tab-4,
+.col-tab-5, .col-tab-6, .col-tab-7, .col-tab-8,
+.col-tab-9, .col-tab-10, .col-tab-11, .col-tab-12, 
+.col-dt-1, .col-dt-2, .col-dt-3, .col-dt-4,
+.col-dt-5, .col-dt-6, .col-dt-7, .col-dt-8,
+.col-dt-9, .col-dt-10, .col-dt-11, .col-dt-12 > div {
+    float: right;
+    background-color: white;
+    border: 1px solid black;
+}
