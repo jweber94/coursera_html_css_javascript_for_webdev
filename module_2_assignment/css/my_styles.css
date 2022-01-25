@@ -1,6 +1,7 @@
 
 /*** Common Settings ***/
-* {
+
+*, *::before, *::after {
     box-sizing: border-box;
 }
 
@@ -11,6 +12,27 @@ h1 {
 }
 .row {
     width: 100%;
+}
+
+@media (min-width: 290px)
+{
+    section {
+        margin: 1%;
+        border: 1px solid black;
+        background-color: grey;
+        height: 250px;
+        border-radius: 5px;
+    }
+}
+
+@media (max-width: 289px)
+{
+    section {
+        margin: 1%;
+        border: 1px solid black;
+        background-color: grey;
+        border-radius: 5px;
+    }
 }
 
 /************************/
@@ -24,8 +46,6 @@ h1 {
     .col-dt-5, .col-dt-6, .col-dt-7, .col-dt-8,
     .col-dt-9, .col-dt-10, .col-dt-11, .col-dt-12 {
         float: left;
-        border: 1px solid black;
-        background-color: grey;
     }
     /* twelvefold column class definition */
     .col-dt-1 {
@@ -73,8 +93,6 @@ h1 {
     .col-tab-5, .col-tab-6, .col-tab-7, .col-tab-8,
     .col-tab-9, .col-tab-10, .col-tab-11, .col-tab-12 {
         float: left;
-        border: 1px solid black;
-        background-color: grey;
     }
     /* twelvefold column class definition */
     .col-tab-1 {
@@ -123,8 +141,6 @@ h1 {
     .col-mob-5, .col-mob-6, .col-mob-7, .col-mob-8,
     .col-mob-9, .col-mob-10, .col-mob-11, .col-mob-12 {
         float: left;
-        border: 1px solid black;
-        background-color: grey;
     }
     /* twelvefold column class definition */
     .col-mob-1 {
@@ -168,16 +184,27 @@ h1 {
 /************************/
 /**** Section Title *****/
 /************************/
-.col-mob-1, .col-mob-2, .col-mob-3, .col-mob-4,
-.col-mob-5, .col-mob-6, .col-mob-7, .col-mob-8,
-.col-mob-9, .col-mob-10, .col-mob-11, .col-mob-12, 
-.col-tab-1, .col-tab-2, .col-tab-3, .col-tab-4,
-.col-tab-5, .col-tab-6, .col-tab-7, .col-tab-8,
-.col-tab-9, .col-tab-10, .col-tab-11, .col-tab-12, 
-.col-dt-1, .col-dt-2, .col-dt-3, .col-dt-4,
-.col-dt-5, .col-dt-6, .col-dt-7, .col-dt-8,
-.col-dt-9, .col-dt-10, .col-dt-11, .col-dt-12 > div {
-    float: right;
+.sec_title {
+    position: relative;
+    left: 80%;
+    width: 20%;
+    text-align: center;
     background-color: white;
     border: 1px solid black;
+    border-radius: 5px;
+}
+
+.my_color_green {
+    background-color: green;
+    color: white;
+}
+
+.my_color_blue {
+    background-color: blue;
+    color: white;
+}
+
+.my_color_pink {
+    background-color: deeppink;
+    color: white;
 }
