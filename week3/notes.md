@@ -62,3 +62,36 @@
 # Using Bootstap
 + Example Implementations are under Components: 
     - https://getbootstrap.com/docs/5.1/components/navbar/
+
+# Central element / Container of the web page
++ ... is called jumbotron in bootstrap
++ Needs a container div element around it
++ If you want a background image that is responsivly stratching, we need to imporz an image into a jumbotron class div element and give it the CSS bootstrap class img-responsive visible-xs 
+    - ```
+        <div id="main-content" class="container">
+            <div class="jumbotron">
+                <img src="images/myimg.jpg" alt="My Picture" class="img-responsive visable-xs">
+            <\div>
+        <\div>    
+    ```
+This image is loaded always and is only visible for screen sizes that are smaller then the bootstrap xs screen size
++ Because of the container div around the jumbotron div, the edges of the main content of the page is nicely aligned with the navbar
+
+# Embed a map from google maps into your site
++ Google maps has the possability to deliver HTML accessable sctions from map points on google maps
+    - To do this, you go to google maps, search for a location and then you can go to settings --> "Karte teilen oder einbetten" --> Karte einbetten an you can copy an iframe HTML tag 
++ To have a link to the google maps site and also have the image on your website, use the following syntax:
+```
+<div class="col-md-12">
+    <a href=www.google.maps.com/path" target="_blank">
+        <div id="my_css_class">
+            <iframe src="google.maps.com/embedding/link" width="100%" height="250px">
+            <span>map</span>
+        </div>
+    </a>
+</div>
+```
+
+# Best Practice
++ At the end of all main html tags, like navbar, jumbotron, footer, you should add a comment to tell where which div element ends
++ To make a horizontal ruler line, you need to define a html hr tag 
