@@ -95,3 +95,25 @@ This image is loaded always and is only visible for screen sizes that are smalle
 # Best Practice
 + At the end of all main html tags, like navbar, jumbotron, footer, you should add a comment to tell where which div element ends
 + To make a horizontal ruler line, you need to define a html hr tag 
++ In order to have a consistent view over all pages of your webpage, just copy paste the page and replace the main content container with your new content.
++ opacity is to make a HTML tags background colut transparent 
++ Make `<hr class=col-xs-12>` for separating items on your page if you are in an extra small setting
++ Basically, you define your HTML structure up front and then add bootstrap classen. If your not confident with the result, you can override some classes or add additional classes in your styles css file. 
+
+# Hot to center something that is not centerable by default
++ Set width and hight fixed and set the margin to 0 auto 15px
+    - margin top left right down --> 0 top, auto left, auto right and 15 px down
+    - Make the `overflow: hidden;` 
+
+# Smaller then xs in bootstrap
++ If something is not nicely designed in the xs-setting in bootstrap, you need to define your own xss definition
+
+# Show currently selected Icon on the page within the Navbar or Footer
++ Use the bootstrap class `class="active"`
+    - This makes the associated button look like you hower over the clickable element 
+# Testing your Implementation
++ After finishing the basic styling, you should try to provoke some edge cases, like a very long text, heading, ... 
+    - Especially if the text is requested from a server (e.g. with javascript)
++ One item is longer then others and the others float to the right or next line = ***Responsive column resets*** in bootstrap.
+    - You just need to add an additional div element with the class `<div class="clearfix visible-md-block visible-lg-block"></div>`
+        - You want to add this after all _n_ div elements that should not floated automatically 
