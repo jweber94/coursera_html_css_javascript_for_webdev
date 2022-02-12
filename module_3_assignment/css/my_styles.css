@@ -1,0 +1,62 @@
+* { box-sizing: border-box; }
+
+#my_heading {
+    text-align: center;
+    color: black;
+    font-weight: bold;
+    font-size: 46px;
+}
+
+#my_heading_sub {
+    text-align: center;
+    color: black;
+    font-size: 36px;
+}
+
+.row {
+    background-color: grey;
+    margin: 5%; 
+}
+
+.navbar-brand > span {
+    font-size: 36px;
+    color: black;
+}
+
+div > p {
+    color: white;
+    margin: 5%;
+}
+
+
+.navbar-static-top {
+    background: grey;
+}
+
+
+ul > li {
+    background-color: white;
+    border: black 2px;
+    text-align: center;
+}
+
+a {
+    color: black;
+}
+
+hr {
+    margin: 0;
+}
+
+#nav-list {
+    margin: 0; 
+}
+
+#collapseable-nav
+{
+    padding: 0;
+}
+
+.row {
+    border-radius: 5px;
+}
