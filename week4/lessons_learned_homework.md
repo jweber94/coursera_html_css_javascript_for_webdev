@@ -171,3 +171,33 @@
             - In case of the logical OR operator, it will return whatever evaluates to true first! (If both are true, it will the left side of the OR-statement.) 
         - This OR-Statement is commonly used in a wide variaty of javascript libraries. 
  
+ ## Objects in Javascript
+ + Remember: Objects are just key-value pairs in javascript
+ + To create an object in javascript, you need to define a new statement: 
+    - `var my_obj = new Object();`
++ You can create a key for an object simply by defining it with the dot operator: 
+    - `my_obj.attr1 = 5;`
+    - `my_obj.attr2 = "Hello World";`
+    - You do not have to specify the type of the value behind the key that you are creating right away with the dot operator. 
++ What you can NOT do is to assign a nested object with the dot operator. If you want to create a nested object within another object, you need to create the nested object first, before you define its keys (and their associated values). 
+    - Example: 
+    ```
+    var my_nested_obj = new Object(); 
+    my_nested_obj.nested = new Object(); 
+    my_nested_obj.nested.test_attr1 = 5; 
+    my_nested_obj.test_attr2 = 6; 
+    ```
+    - Counter example: (NOT working)
+    ```
+    var my_nested_obj = new Object(); 
+    my_nested_obj.nested.test_attr1 = 5;
+    ```
+    - In the last example, there is no object that can contain a key with the name `test_attr1` and therefore it is not working. 
++ To access or create new keys for an object, there are two valid kinds how you can do this: 
+    - Access by the dot operator after the key was already created: 
+        - `console.log(my_nested_obj.test_attr2); // prints 6 to the console`
+    - Access the key by its name as a string with the braced operator:
+        - `console.log(my_nested_obj["test_attr_2"]);` 
+        - This method could also be used in order to create new keys for an existing object:
+            - `my_nested_obj["test_attr_3"] = "new test entry"`
+            - With it, it is also possible to create keys for an object that would otherwise not be valid as a javascript object identifier. (e.g. a key with empty spaces, like: `my_nested_obj["spacy key"] = 42;`)
