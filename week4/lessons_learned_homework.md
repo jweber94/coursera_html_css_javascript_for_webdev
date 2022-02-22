@@ -201,3 +201,50 @@
         - This method could also be used in order to create new keys for an existing object:
             - `my_nested_obj["test_attr_3"] = "new test entry"`
             - With it, it is also possible to create keys for an object that would otherwise not be valid as a javascript object identifier. (e.g. a key with empty spaces, like: `my_nested_obj["spacy key"] = 42;`)
+
+## Object Literal notation: 
++ You can define multiple nested key-value pairs without defining an explicit `var` object by using the object literal notation: 
+    - Example: 
+    ```
+    var facebook = {
+        name: "Facebook", 
+        ceo: {
+            first_name: "Mark",
+            fav_color: "blue"
+        },
+        "stock price": 188
+    };
+    ```
+    - Remarks: 
+        * By using the object literal notation, you can define keys that would not be valid in case of the dot notation
+        * You can define nested object _without_ explicitly defining a `new Object()` for the key.
+# Function Objects in Javascript
++ A function is basically a special type of Object in javascript. You can assign additional keys to a function if you want. 
+    - Example: 
+    ```
+    function multiply(x, y){
+        return x*y;
+    }
+    multiply.version = "v1.1.1";
+
+    console.log(multiply.version); // delivers the version string
+    console.log(multiply.toString())
+    ```
++ Every Object (basic objects as well as functions) has the implicit method ".toString()" whicht is called if you try to print an object with `console.log(fnc_name.toString())`
+    - In case of a function, it will print the function definition itself in clear text. 
+    - In the example above, it will print only the function implementation. If you want to print the version with the toString() method, you need to do `console.log(multiply.version.toString());`
+
++ By taking advantage of this property of a function, you can easily do functional programming in javascript. 
+    - Example: 
+    ```
+    function makeMultiplier(n_times)
+    {
+        var func = function(value) {
+            return n_times * value;
+        }
+        return func; // the result of the function is another function
+    };
+
+    var multiply3_fnc = makeMultiplier(3); // delivers a function object that has the n_time attribute set to 3 - this function object we can use to generate a primitive type like a number (aka floating point number, since javascript only has floating point values and integers are just a special form of the float.)
+    console.log(multiply3_fnc(100)); // returns 300 to the console
+    ```
