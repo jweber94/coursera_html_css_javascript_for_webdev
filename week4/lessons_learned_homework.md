@@ -248,3 +248,74 @@
     var multiply3_fnc = makeMultiplier(3); // delivers a function object that has the n_time attribute set to 3 - this function object we can use to generate a primitive type like a number (aka floating point number, since javascript only has floating point values and integers are just a special form of the float.)
     console.log(multiply3_fnc(100)); // returns 300 to the console
     ```
+## Passing Values by Value or by Reference
++ Basically everything in javascript is copied by value. But since object have an internal pointer to where the objects components are stored, you can simulate that you were handing over objects as a reference. 
+    - Visualization: 
+        * Passed by value: (We are placing a different value after the copy to the newly allocated memory) 
+        [](images/passed_by_value.png)
+        * Passed by reference: (Within the object is a pointer to the primitive datatype which is copied and therefore, if you are manipulating the data behind the pointer that is copied, you manipulate the data in both objects. Aka we make a shallow copy like it is called in C++)
+        [](images/passed_by_reference.png)
+
++ Summary: "In javascript, primitives are always passed by value and object are always passed by reference."
+
+## Function constructors, prototype functions and the `this` Variable
++ With function constructors, the `this` keyword and prototype functions it is possible to do object oriented programming in javascript.
++ `this` is like in other languages the pointer to the object instance itself
++ prototype functions are like static functions in C++. They are used by all instances of an object that they are associated with by using the special member variable `__proto__` which contains the prototype functions. 
+    - Prototype functions ***must be*** defined ***outside*** the function constructor. If you do not do this, you will probably run into some very hard to find errors.  
++ Function constructors are like normal constructors in other languages like C++
+    - It is very important that a function constructor does ***NOT*** have a return type!
+    - You need to create an instance of an object (aka function constructor) with the keyword `new` before the function constructor name. If you don't do this, the created object is in most cases `undefined` within the javascript interpreter. 
+        * Best practice: All function constructors have a capitalised first letter as their names. 
+    
++ Example:
+```
+// function constructor of the circle object
+function Circle(radius, color_obj) {
+    this.radius = radius; // passed by value
+    this.color = color_obj; // passed by reference
+
+    // you can define methods here if you want to 
+    // this.getColor = function () {
+    //      return this.color.color; // should return the handed over color    
+    //}
+}
+
+Circle.prototype.getArea() = 
+    function () {
+        return Math.PI * Math.pow(this.radius, 2); // Math is a standard library in javascript which will be found by all javascript interpreters 
+    };
+
+var global_color = {color: "blue"}; 
+var myCircle = new Circle(20, color); 
+
+console.log(myCircle.getRadius()); 
+```
+***TODO: Play a little with object orientation and javascript***
+
+## Object literals and the `this` keyword
++ Object literals are object definitions on the right hand side of an equal sign (`var lit_test = {radius: 10, color: "blue"};`) 
++ If you create an object literal, you invoke the ` = new Object()` command implicitly. 
+    - Therefore, you can use the `this` keyword _within_ the created object in order to access other attributes of the created object. 
+    - CAUTION: If you create a nested function within a function of an object literal and use the this keyword, the `this` will refer to the global object. 
+        * You can do a common workaround with defining `var self = this;` and access the this pointer within the nested function by using self. 
++ Example: 
+```
+var literalCircle = { // is an implicit call of = new Object(); 
+    radius: 10,
+
+    getArea: function() {
+        var self = this;
+
+        var increase_radius_nested() {
+            self.radius = 20; 
+        };
+
+        increase_radius(); // invoke the nested function
+
+        return Math.PI * Math.pow(this.radius, 2); // here we access the object literal this pointer since we are not nested twice within the object 
+    }
+};
+
+console.log(literalCircle.getArea()); // 1256.63 
+```
