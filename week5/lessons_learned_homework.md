@@ -1,0 +1,2 @@
+# Lessons learned from module 5 assignment
++ In order to be able to replace some parts of the HTML code from the `.html` document, we need a unique identifier. In the assignment, there are the "mustach" curly braces used to accomplish this.  
